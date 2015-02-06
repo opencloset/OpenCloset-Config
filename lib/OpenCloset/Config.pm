@@ -7,7 +7,7 @@ use warnings;
 
 use Path::Tiny;
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 sub load {
     my ( $conf_file, %default ) = @_;
