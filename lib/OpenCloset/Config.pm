@@ -13,7 +13,7 @@ sub load {
     my ( $conf_file, %default ) = @_;
 
     $conf_file ||= $ENV{OPENCLOSET_CONFIG};
-    die "cannot find config file" unless -e $conf_file;
+    die "cannot find config file\n" unless -e $conf_file;
     my $conf = eval path($conf_file)->slurp_utf8;
 
     my %real_conf = ( %default, %$conf );
