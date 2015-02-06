@@ -26,6 +26,6 @@ variables = $DB::single
 [-RegularExpressions::RequireExtendedFormatting]
 [-InputOutput::ProhibitTwoArgOpen]
 [-Modules::ProhibitEvilModules]
+[-Lax::ProhibitStringyEval::ExceptForRequire]
 
 # Turn this on
-[Lax::ProhibitStringyEval::ExceptForRequire]
