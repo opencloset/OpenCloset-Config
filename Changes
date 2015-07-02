@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.002     2015-07-02 15:54:42+09:00 Asia/Seoul
     - Enable config root is selective
 
 0.001     2015-02-06 22:31:16+09:00 Asia/Seoul
