@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Enable config root is selective
 
 0.001     2015-02-06 22:31:16+09:00 Asia/Seoul
     - first release
