@@ -73,6 +73,18 @@ sub chi {
     return \%cache_conf;
 }
 
+sub timezone {
+    my $self = shift;
+
+    my $conf = $self->conf->{timezone};
+    unless ($conf) {
+        warn "timezone section is needed\n";
+        return;
+    }
+
+    return $conf;
+}
+
 sub load {
     my $conf_file = shift;
     my %opt;
