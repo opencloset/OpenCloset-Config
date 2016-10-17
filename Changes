@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Add helper API for dbic, chi & timezone
+    - Support OOP style usage
     - Remove uninitialized warning when config file is not defined
 
 0.002     2015-07-02 15:54:42+09:00 Asia/Seoul
