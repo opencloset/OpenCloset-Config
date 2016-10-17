@@ -33,6 +33,25 @@ sub _build_conf {
     return $conf;
 }
 
+sub dbic {
+    my $self = shift;
+
+    my $conf = $self->conf;
+    unless ( $conf->{database} ) {
+        warn "database section is needed\n";
+        return;
+    }
+
+    my %dbic_conf = (
+        dsn      => $conf->{database}{dsn},
+        user     => $conf->{database}{user},
+        password => $conf->{database}{pass},
+        %{ $conf->{database}{opts} },
+    );
+
+    return \%dbic_conf;
+}
+
 sub load {
     my $conf_file = shift;
     my %opt;
