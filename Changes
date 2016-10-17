@@ -1,9 +1,10 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Fix bug: load() undef parameter handling
 
 0.004     2016-10-17 16:37:35+09:00 Asia/Seoul
-    - Fix ignoring environment variable due to MooX::TypeTiny
+    - Fix bug: ignoring environment variable due to MooX::TypeTiny
 
 0.003     2016-10-17 15:52:33+09:00 Asia/Seoul
     - Add helper API for dbic, chi & timezone

@@ -90,7 +90,14 @@ sub load {
     %opt = %{ shift; } if ref $_[0] eq "HASH";
     my %default = @_;
 
-    my $conf = OpenCloset::Config->new( file => $conf_file )->conf;
+    my $occ;
+    if ($conf_file) {
+        $occ = OpenCloset::Config->new( file => $conf_file );
+    }
+    else {
+        $occ = OpenCloset::Config->new;
+    }
+    my $conf = $occ->conf;
 
     my %real_conf;
     if ( $opt{root} ) {
