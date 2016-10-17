@@ -11,11 +11,14 @@ our $VERSION = '0.003';
 
 sub load {
     my $conf_file = shift;
-    my %opt; %opt = %{ shift; } if ref $_[0] eq 'HASH';
-    my %default   = @_;
+    my %opt;
+    %opt = %{ shift; } if ref $_[0] eq "HASH";
+    my %default = @_;
 
-    $conf_file ||= $ENV{OPENCLOSET_CONFIG};
-    die "cannot find config file\n" unless -e $conf_file;
+    $conf_file ||= $ENV{OPENCLOSET_CONFIG} || q{};
+    die
+        "Cannot find config file. You can set OPENCLOSET_CONFIG environment variable for default config file path.\n"
+        unless -e $conf_file;
     my $conf = eval path($conf_file)->slurp_utf8;
 
     my %real_conf;
