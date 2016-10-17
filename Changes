@@ -1,6 +1,7 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+    - Fix ignoring environment variable due to MooX::TypeTiny
 
 0.003     2016-10-17 15:52:33+09:00 Asia/Seoul
     - Add helper API for dbic, chi & timezone
