@@ -114,29 +114,51 @@ __END__
 
     use OpenCloset::Config;
 
-    my $conf              = OpenCloset::Config::load( 'app.conf' );
+    my $conf              = OpenCloset::Config::load( "app.conf" );
     my $conf_with_default = OpenCloset::Config::load(
-        'app.conf',
-        key1 => 'default1',
-        key2 => 'default2',
-        key3 => 'default3',
-        key4 => 'default4',
+        "app.conf",
+        key1 => "default1",
+        key2 => "default2",
+        key3 => "default3",
+        key4 => "default4",
     );
     my $conf_sub = OpenCloset::Config::load(
-        'app.conf',
-        { root => 'subkey' },
+        "app.conf",
+        { root => "subkey" },
     );
     my $conf_sub_with_default = OpenCloset::Config::load(
-        'app.conf',
-        { root => 'subkey' },
-        key1 => 'default1',
-        key2 => 'default2',
-        key3 => 'default3',
-        key4 => 'default4',
+        "app.conf",
+        { root => "subkey" },
+        key1 => "default1",
+        key2 => "default2",
+        key3 => "default3",
+        key4 => "default4",
     );
+
+    # same as OpenCloset::Config::load("app.conf")
+    my $conf     = OpenCloset::Config->new( file => "app.conf" )->conf;
+
+    # OOP style
+    my $occ      = OpenCloset::Config->new( file => "app.conf" );
+    my $timezone = $occ->timezone;
+    my $cache    = CHI->new( %{ $occ->chi } );
+    my $db       = OpenCloset::Schema->connect( $occ->dbic );
+
 
 =head1 DESCRIPTION
 
 ...
 
 =func load
+
+=attr file
+
+=attr conf
+
+=method new
+
+=method dbic
+
+=method chi
+
+=method timezone
