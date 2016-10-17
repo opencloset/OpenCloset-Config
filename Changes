@@ -1,6 +1,8 @@
 Revision history for {{ $dist->name }}
 
 {{ $NEXT }}
+
+0.005     2016-10-17 16:54:19+09:00 Asia/Seoul
     - Fix bug: load() undef parameter handling
 
 0.004     2016-10-17 16:37:35+09:00 Asia/Seoul
