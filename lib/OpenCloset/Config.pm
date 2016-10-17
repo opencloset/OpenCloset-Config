@@ -52,6 +52,27 @@ sub dbic {
     return \%dbic_conf;
 }
 
+sub chi {
+    my $self = shift;
+
+    my $conf = $self->conf;
+    unless ( $conf->{cache} ) {
+        warn "cache section is needed\n";
+        return;
+    }
+    unless ( $conf->{cache}{dir} ) {
+        warn "cache.dir section is needed\n";
+        return;
+    }
+
+    my %cache_conf = (
+        driver   => "File",
+        root_dir => $conf->{cache}{dir},
+    );
+
+    return \%cache_conf;
+}
+
 sub load {
     my $conf_file = shift;
     my %opt;
