@@ -2,12 +2,36 @@ package OpenCloset::Config;
 # ABSTRACT: OpenCloset config class
 
 use utf8;
-use strict;
-use warnings;
+
+use Moo;
+use MooX::TypeTiny;
+use Types::Standard qw( Str );
+use namespace::clean -except => 'meta';
+
+our $VERSION = '0.003';
 
 use Path::Tiny;
 
-our $VERSION = '0.003';
+has "file" => (
+    is      => "ro",
+    isa     => Str,
+    default => sub { $ENV{OPENCLOSET_CONFIG} },
+);
+
+has "conf" => ( is => "lazy" );
+
+sub _build_conf {
+    my $self = shift;
+
+    my $conf_file = $self->file;
+    die
+        "Cannot find config file. You can set OPENCLOSET_CONFIG environment variable for default config file path.\n"
+        unless $conf_file && -e $conf_file;
+
+    my $conf = eval path($conf_file)->slurp_utf8;
+
+    return $conf;
+}
 
 sub load {
     my $conf_file = shift;
@@ -15,11 +39,7 @@ sub load {
     %opt = %{ shift; } if ref $_[0] eq "HASH";
     my %default = @_;
 
-    $conf_file ||= $ENV{OPENCLOSET_CONFIG} || q{};
-    die
-        "Cannot find config file. You can set OPENCLOSET_CONFIG environment variable for default config file path.\n"
-        unless -e $conf_file;
-    my $conf = eval path($conf_file)->slurp_utf8;
+    my $conf = OpenCloset::Config->new( file => $conf_file )->conf;
 
     my %real_conf;
     if ( $opt{root} ) {
