@@ -12,20 +12,23 @@ my %WriteMakefileArgs = (
     "ExtUtils::MakeMaker" => "6.17"
   },
   "DISTNAME" => "OpenCloset-Config",
-  "EXE_FILES" => [],
   "LICENSE" => "perl",
   "MIN_PERL_VERSION" => "5.008",
   "NAME" => "OpenCloset::Config",
   "PREREQ_PM" => {
+    "Moo" => 0,
+    "MooX::TypeTiny" => 0,
     "Path::Tiny" => 0,
-    "strict" => 0,
-    "utf8" => 0,
-    "warnings" => 0
+    "Types::Standard" => 0,
+    "namespace::clean" => 0,
+    "utf8" => 0
   },
   "TEST_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0,
     "File::Spec" => 0,
-    "Test::More" => 0
+    "Test::More" => 0,
+    "strict" => 0,
+    "warnings" => 0
   },
   "VERSION" => "0.003",
   "test" => {
@@ -35,10 +38,14 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
-  "ExtUtils::MakeMaker" => "6.17",
+  "ExtUtils::MakeMaker" => 0,
   "File::Spec" => 0,
+  "Moo" => 0,
+  "MooX::TypeTiny" => 0,
   "Path::Tiny" => 0,
   "Test::More" => 0,
+  "Types::Standard" => 0,
+  "namespace::clean" => 0,
   "strict" => 0,
   "utf8" => 0,
   "warnings" => 0
