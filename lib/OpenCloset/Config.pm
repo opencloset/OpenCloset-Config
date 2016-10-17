@@ -4,7 +4,6 @@ package OpenCloset::Config;
 use utf8;
 
 use Moo;
-use MooX::TypeTiny;
 use Types::Standard qw( Str );
 use namespace::clean -except => 'meta';
 
