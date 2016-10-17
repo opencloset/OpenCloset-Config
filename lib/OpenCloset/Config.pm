@@ -8,7 +8,7 @@ use MooX::TypeTiny;
 use Types::Standard qw( Str );
 use namespace::clean -except => 'meta';
 
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 use Path::Tiny;
 
